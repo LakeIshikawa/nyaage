@@ -33,7 +33,7 @@ public class ViewState {
      * Draw
      */
     public void draw() {
-        
+
     }
 
     /**

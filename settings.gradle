@@ -1,1 +1,1 @@
-include 'desktop', 'android', 'ios', 'html', 'core', 'tools:astar', "tools:editor"
+include 'desktop', 'android', 'ios', 'html', 'core', 'tools:astar', "tools:editor", "spine-runtimes:spine-libgdx:spine-libgdx"

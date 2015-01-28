@@ -122,6 +122,14 @@ project("tools:astar") {
     apply plugin: "java"
 }
 
+project("spine-runtimes:spine-libgdx:spine-libgdx") {
+    apply plugin: "java"
+
+    dependencies {
+        compile "com.badlogicgames.gdx:gdx:$gdxVersion"
+    }
+}
+
 tasks.eclipse.doLast {
     delete ".project"
 }
