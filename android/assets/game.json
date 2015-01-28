@@ -1,0 +1,293 @@
+{
+    rooms:[
+        {
+            "name":"Intro",
+            "script":"scripts/intro.lua",
+            "bgFrameTime":0.033
+        },
+        {
+            "name":"Bank's Vault",
+            "backgrounds":["bg/vault"],
+            "walkMap":"walkmaps/vault.sqb",
+            "overlays":[
+                { "alphaMask": "overlays/vaultTable.png", "baseline":104 },
+                { "alphaMask": "overlays/vaultDoor.png", "baseline":186 }
+            ],
+            "hotspots":{
+                "hotspotMap":"hotspots/vault.bmp",
+                "hotspots": [
+                    { "displayName":"Vault's door", "scriptName":"hVaultDoor" },
+                    { "displayName":"Pile of bananas", "scriptName":"hBananas" },
+                    { "displayName":"Vault's panel", "scriptName":"hVaultPanel" }
+                ]
+            },
+            "objects":[
+                {
+                    "displayName":"Door",
+                    "scriptId":"oVaultDoorClosed",
+                    "startX":700,
+                    "startY":220,
+                    "defaultImage":"fg/vaultDoorClosed"
+                },
+                {
+                    "displayName":"Door",
+                    "scriptId":"oVaultDoorOpened",
+                    "startX":700,
+                    "startY":220,
+                    "defaultImage":"fg/vaultDoorOpened"
+                }
+             ],
+            "script":"scripts/vault.lua",
+            "bgFrameTime":0.033
+        },
+        {
+            "name":"Boss' office",
+            "backgrounds":["bg/bossOffice"],
+            "bgFrameTime":0.033
+        }
+    ],
+
+    "characters":[
+        {
+            "displayName":"Keymon",
+            "scriptId":"cKeymon",
+            "normalView":0,
+            "walkingView":1,
+            "talkingView":2,
+            "startRoom":1,
+            "walkingSpeed":100,
+            "startX":603,
+            "startY":135
+        },
+        {
+            "displayName":"Boss",
+            "scriptId":"cBoss",
+            "normalView":3,
+            "walkingView":3,
+            "talkingView":4,
+            "startRoom":2,
+            "walkingSpeed":100,
+            "startX":603,
+            "startY":135
+        }
+    ],
+
+    "views":[
+        {
+            "name":"Keymon normal",
+            "playMode":NORMAL,
+            "baseline":8,
+            "sequences":[
+                {
+                    "frameTime":0.033,
+                    "frames": [
+                        { "region":"fg/keymonWalk0", "flip":true }
+                    ]
+                },
+                {
+                    "frameTime":0.033,
+                    "frames": [
+                        { "region":"fg/keymonWalk0", "flip":true }
+                    ]
+                },
+                {
+                    "frameTime":0.033,
+                    "frames": [
+                        { "region":"fg/keymonWalk0", "flip":false }
+                    ]
+                },
+                {
+                    "frameTime":0.033,
+                    "frames": [
+                        { "region":"fg/keymonWalk0", "flip":false }
+                    ]
+                }
+            ]
+        },
+        {
+            "name":"Keymon walk",
+            "playMode":LOOP,
+            "baseline":8,
+            "sequences":[
+                {
+                    "frameTime":0.066,
+                    "frames": [
+                                { region:"fg/keymonWalk0", "flip":true },
+                                { region:"fg/keymonWalk1", "flip":true },
+                                { region:"fg/keymonWalk2", "flip":true },
+                                { region:"fg/keymonWalk3", "flip":true },
+                                { region:"fg/keymonWalk4", "flip":true },
+                                { region:"fg/keymonWalk5", "flip":true },
+                                { region:"fg/keymonWalk6", "flip":true },
+                                { region:"fg/keymonWalk7", "flip":true },
+                                { region:"fg/keymonWalk8", "flip":true }
+                              ]
+                },
+                {
+                    "frameTime":0.066,
+                    "frames": [
+                                { region:"fg/keymonWalk0", "flip":true },
+                                { region:"fg/keymonWalk1", "flip":true },
+                                { region:"fg/keymonWalk2", "flip":true },
+                                { region:"fg/keymonWalk3", "flip":true },
+                                { region:"fg/keymonWalk4", "flip":true },
+                                { region:"fg/keymonWalk5", "flip":true },
+                                { region:"fg/keymonWalk6", "flip":true },
+                                { region:"fg/keymonWalk7", "flip":true },
+                                { region:"fg/keymonWalk8", "flip":true }
+                              ]
+                },
+                {
+                    "frameTime":0.066,
+                    "frames": [
+                                { region:"fg/keymonWalk0", "flip":false },
+                                { region:"fg/keymonWalk1", "flip":false },
+                                { region:"fg/keymonWalk2", "flip":false },
+                                { region:"fg/keymonWalk3", "flip":false },
+                                { region:"fg/keymonWalk4", "flip":false },
+                                { region:"fg/keymonWalk5", "flip":false },
+                                { region:"fg/keymonWalk6", "flip":false },
+                                { region:"fg/keymonWalk7", "flip":false },
+                                { region:"fg/keymonWalk8", "flip":false }
+                              ]
+                },
+                {
+                    "frameTime":0.066,
+                    "frames": [
+                                { region:"fg/keymonWalk0", "flip":false },
+                                { region:"fg/keymonWalk1", "flip":false },
+                                { region:"fg/keymonWalk2", "flip":false },
+                                { region:"fg/keymonWalk3", "flip":false },
+                                { region:"fg/keymonWalk4", "flip":false },
+                                { region:"fg/keymonWalk5", "flip":false },
+                                { region:"fg/keymonWalk6", "flip":false },
+                                { region:"fg/keymonWalk7", "flip":false },
+                                { region:"fg/keymonWalk8", "flip":false }
+                              ]
+                },
+            ]
+        },
+        {
+            "name":"Keymon talk",
+            "playMode":LOOP,
+            "baseline":8,
+            "sequences":[
+                {
+                    "frameTime":0.1,
+                    "frames": [
+                                { region:"fg/keymonTalk0", "flip":true },
+                                { region:"fg/keymonTalk1", "flip":true },
+                                { region:"fg/keymonTalk2", "flip":true },
+                                { region:"fg/keymonTalk3", "flip":true }
+                              ]
+                },
+                {
+                    "frameTime":0.1,
+                    "frames": [
+                                { region:"fg/keymonTalk0", "flip":true },
+                                { region:"fg/keymonTalk1", "flip":true },
+                                { region:"fg/keymonTalk2", "flip":true },
+                                { region:"fg/keymonTalk3", "flip":true }
+                              ]
+                },
+                {
+                    "frameTime":0.1,
+                    "frames": [
+                                { region:"fg/keymonTalk0", "flip":false },
+                                { region:"fg/keymonTalk1", "flip":false },
+                                { region:"fg/keymonTalk2", "flip":false },
+                                { region:"fg/keymonTalk3", "flip":false }
+                              ]
+                },
+                {
+                    "frameTime":0.1,
+                    "frames": [
+                                { region:"fg/keymonTalk0", "flip":false },
+                                { region:"fg/keymonTalk1", "flip":false },
+                                { region:"fg/keymonTalk2", "flip":false },
+                                { region:"fg/keymonTalk3", "flip":false }
+                              ]
+                },
+            ]
+        },
+        {
+            "name":"Boss normal",
+            "playMode":NORMAL,
+            "baseline":8,
+            "sequences":[
+                {
+                    "frameTime":0.033,
+                    "frames": [
+                        { "region":"fg/bossTalk0", "flip":true }
+                    ]
+                },
+                {
+                    "frameTime":0.033,
+                    "frames": [
+                        { "region":"fg/bossTalk0", "flip":true }
+                    ]
+                },
+                {
+                    "frameTime":0.033,
+                    "frames": [
+                        { "region":"fg/bossTalk0", "flip":false }
+                    ]
+                },
+                {
+                    "frameTime":0.033,
+                    "frames": [
+                        { "region":"fg/bossTalk0", "flip":false }
+                    ]
+                }
+            ]
+        },
+        {
+            "name":"Boss talk",
+            "playMode":LOOP,
+            "baseline":8,
+            "sequences":[
+                {
+                    "frameTime":0.1,
+                    "frames": [
+                                { region:"fg/bossTalk0", "flip":true },
+                                { region:"fg/bossTalk1", "flip":true },
+                                { region:"fg/bossTalk2", "flip":true },
+                                { region:"fg/bossTalk3", "flip":true }
+                              ]
+                },
+                {
+                    "frameTime":0.1,
+                    "frames": [
+                                { region:"fg/bossTalk0", "flip":true },
+                                { region:"fg/bossTalk1", "flip":true },
+                                { region:"fg/bossTalk2", "flip":true },
+                                { region:"fg/bossTalk3", "flip":true }
+                              ]
+                },
+                {
+                    "frameTime":0.1,
+                    "frames": [
+                                { region:"fg/bossTalk0", "flip":false },
+                                { region:"fg/bossTalk1", "flip":false },
+                                { region:"fg/bossTalk2", "flip":false },
+                                { region:"fg/bossTalk3", "flip":false }
+                              ]
+                },
+                {
+                    "frameTime":0.1,
+                    "frames": [
+                                { region:"fg/bossTalk0", "flip":false },
+                                { region:"fg/bossTalk1", "flip":false },
+                                { region:"fg/bossTalk2", "flip":false },
+                                { region:"fg/bossTalk3", "flip":false }
+                              ]
+                },
+            ]
+        },
+    ],
+
+    "defaultFont":"fonts/efmi.ttf",
+    "mainScript":"scripts/input.lua",
+    "startRoom":0,
+    "protagonist":0
+}
