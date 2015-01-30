@@ -101,7 +101,7 @@ project(":core") {
     apply plugin: "java"
 
     dependencies {
-        compile project(":spine-runtimes:spine-libgdx:spine-libgdx")
+        compile project(":spine-libgdx")
         compile project(":tools:astar")
         compile "com.badlogicgames.gdx:gdx:$gdxVersion"
         compile "com.badlogicgames.gdx:gdx-freetype:$gdxVersion"
@@ -122,7 +122,7 @@ project("tools:astar") {
     apply plugin: "java"
 }
 
-project("spine-runtimes:spine-libgdx:spine-libgdx") {
+project("spine-libgdx") {
     apply plugin: "java"
 
     dependencies {
