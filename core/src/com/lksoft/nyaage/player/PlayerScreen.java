@@ -4,6 +4,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.assets.loaders.FileHandleResolver;
 import com.badlogic.gdx.assets.loaders.resolvers.InternalFileHandleResolver;
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
@@ -29,6 +30,8 @@ public class PlayerScreen implements Screen {
         // Load resources
         // Images
         Nya.get().getAssetManager().load("image/images.atlas", TextureAtlas.class);
+        Nya.get().getAssetManager().load("image/characters.atlas", TextureAtlas.class);
+
         // Fonts
         FileHandleResolver resolver = new InternalFileHandleResolver();
         Nya.get().getAssetManager().setLoader(FreeTypeFontGenerator.class, new FreeTypeFontGeneratorLoader(resolver));
@@ -37,6 +40,8 @@ public class PlayerScreen implements Screen {
         FreetypeFontLoader.FreeTypeFontLoaderParameter size1Params = new FreetypeFontLoader.FreeTypeFontLoaderParameter();
         size1Params.fontFileName = game.getDefaultFont();
         size1Params.fontParameters.size = 24;
+        size1Params.fontParameters.borderWidth = 2.0f;
+        size1Params.fontParameters.borderColor = Color.BLACK;
         Nya.get().getAssetManager().load(game.getDefaultFont(), BitmapFont.class, size1Params);
         Nya.get().getAssetManager().finishLoading();
 

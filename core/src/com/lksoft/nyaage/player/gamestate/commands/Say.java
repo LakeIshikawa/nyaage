@@ -55,8 +55,8 @@ public class Say extends ScriptCommand {
         font.setColor(1, 0, 0, 1);
         BitmapFont.TextBounds bounds = font.getWrappedBounds(text, MAX_WIDTH);
 
-        int x = (int)(character.getPosition().x - bounds.width/2);
-        int y = (int)(character.getPosition().y + character.getCurrentFrame().getRegionHeight() + VER_ROOM);
+        int x = (int)(character.getView().getPosition().x - bounds.width/2);
+        int y = (int)(character.getView().getPosition().y + character.getView().getHeight() + VER_ROOM);
 
         // Do not overflow
         int maxH = (int)Nya.get().getViewport().getWorldWidth() - 10;

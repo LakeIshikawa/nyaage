@@ -38,7 +38,7 @@ public class WalkTo extends ScriptCommand {
         this.character = character;
 
         path = AStarPathFinder.get().findGoodPath(
-                new Point((int) character.getPosition().x, (int) character.getPosition().y),
+                new Point((int) character.getView().getPosition().x, (int) character.getView().getPosition().y),
                 new Point((int) destination.x, (int) destination.y),
                 sqb,
                 3.0f,
@@ -140,7 +140,7 @@ public class WalkTo extends ScriptCommand {
 
         // Finish
         if( i==path.size() ) {
-            character.getPosition().set(
+            character.getView().setPosition(
                     path.get(i-1).getBounds().getCenterX(),
                     path.get(i-1).getBounds().getCenterY());
             return true;
@@ -162,13 +162,13 @@ public class WalkTo extends ScriptCommand {
                 path.get(i-1).getBounds().getCenterY(),
                 path.get(i).getBounds().getCenterY(),
                 t);
-        character.getPosition().set(ix, iy);
+        character.getView().setPosition(ix, iy);
 
         // Set direction
-        if( Math.abs(dx) > Math.abs(dy) && dx > 0 ) character.faceDirection(Direction.RIGHT);
-        if( Math.abs(dx) > Math.abs(dy) && dx < 0 ) character.faceDirection(Direction.LEFT);
-        if( Math.abs(dy) > Math.abs(dx) && dy > 0 ) character.faceDirection(Direction.UP);
-        if( Math.abs(dy) > Math.abs(dx) && dy < 0 ) character.faceDirection(Direction.DOWN);
+        if( Math.abs(dx) > Math.abs(dy) && dx > 0 ) character.getView().faceDirection(Direction.RIGHT);
+        if( Math.abs(dx) > Math.abs(dy) && dx < 0 ) character.getView().faceDirection(Direction.LEFT);
+        if( Math.abs(dy) > Math.abs(dx) && dy > 0 ) character.getView().faceDirection(Direction.UP);
+        if( Math.abs(dy) > Math.abs(dx) && dy < 0 ) character.getView().faceDirection(Direction.DOWN);
 
         return false;
     }
@@ -216,7 +216,7 @@ public class WalkTo extends ScriptCommand {
         // Position
         int dx = (int)path.get(path.size()-1).getBounds().getCenterX();
         int dy = (int)path.get(path.size()-1).getBounds().getCenterY();
-        character.getPosition().set(dx, dy);
+        character.getView().getPosition().set(dx, dy);
 
         // Face
         if( path.size() > 2 ) {
@@ -224,11 +224,11 @@ public class WalkTo extends ScriptCommand {
             int ndy = dy - (int) path.get(path.size() - 2).getBounds().getCenterY();
 
             if( Math.abs(ndx) > Math.abs(ndy) ){
-                if( ndx > 0 ) character.faceDirection(Direction.RIGHT);
-                else character.faceDirection(Direction.LEFT);
+                if( ndx > 0 ) character.getView().faceDirection(Direction.RIGHT);
+                else character.getView().faceDirection(Direction.LEFT);
             } else {
-                if( ndy > 0 ) character.faceDirection(Direction.UP);
-                else character.faceDirection(Direction.DOWN);
+                if( ndy > 0 ) character.getView().faceDirection(Direction.UP);
+                else character.getView().faceDirection(Direction.DOWN);
             }
         }
     }

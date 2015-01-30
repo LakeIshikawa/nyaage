@@ -8,7 +8,6 @@ import com.lksoft.nyaage.player.Nya;
 import com.lksoft.nyaage.player.common.Direction;
 import com.lksoft.nyaage.player.data.NyaCharacter;
 import com.lksoft.nyaage.player.data.NyaGame;
-import com.lksoft.nyaage.player.data.NyaView;
 import com.lksoft.nyaage.player.gamestate.commands.CommandRunner;
 import com.lksoft.nyaage.player.gamestate.commands.DisplayText;
 import com.lksoft.nyaage.player.gamestate.commands.Wait;

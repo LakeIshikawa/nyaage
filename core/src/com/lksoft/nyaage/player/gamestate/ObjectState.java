@@ -14,19 +14,14 @@ import com.lksoft.nyaage.player.data.NyaObject;
 public class ObjectState implements DrawableState {
     // Basic data
     private NyaObject object;
-    // Position
-    private Vector2 position = new Vector2();
 
-    // Default image
-    TextureRegion defaultImage;
+
     // Locked view
-    private ViewState lockedView;
+    private ViewState view;
 
     // Visibility
     private boolean visible = true;
 
-    // Anime timer
-    float timer = 0.0f;
 
     /**
      * Make new object
@@ -34,43 +29,26 @@ public class ObjectState implements DrawableState {
      */
     public ObjectState(NyaObject object){
         this.object = object;
-        this.position.set(object.getStartX(), object.getStartY());
 
-        TextureAtlas atlas = Nya.get().getAssetManager().get("image/images.atlas", TextureAtlas.class);
-        this.defaultImage = atlas.findRegion(object.getDefaultImage());
-    }
-
-    /**
-     * @return Current anime frame of current view
-     */
-    public TextureRegion getCurrentFrame(){
-        if( lockedView != null ) {
-            Animation anime = lockedView.getAnimations().get(0);
-            return anime.getKeyFrame(timer);
-        } else
-            return defaultImage;
+        // TODO Load view
     }
 
     /**
      * Frame update
      */
     public void update() {
-        // Animate timer
-        timer += Gdx.graphics.getDeltaTime();
+        //view.update();
     }
 
 
     @Override
     public void draw() {
-        Nya.get().getSpriteBatch().draw(
-                getCurrentFrame(),
-                position.x,
-                position.y);
+        //view.draw();
     }
 
     @Override
     public int getBaseline() {
-        return (int)position.y;
+        return 0;//view.getBaseline();
     }
 
     public boolean isVisible() {

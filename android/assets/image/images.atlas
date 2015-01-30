@@ -34,230 +34,132 @@ bg/vault
   index: -1
 
 images2.png
-size: 1024,512
+size: 256,1024
 format: RGBA8888
 filter: Nearest,Nearest
 repeat: none
 fg/bossTalk0
   rotate: false
-  xy: 378, 376
+  xy: 2, 427
   size: 107, 130
   orig: 107, 130
   offset: 0, 0
   index: -1
 fg/bossTalk1
   rotate: false
-  xy: 487, 376
+  xy: 2, 295
   size: 107, 130
   orig: 107, 130
   offset: 0, 0
   index: -1
 fg/bossTalk2
   rotate: false
-  xy: 596, 376
+  xy: 2, 163
   size: 107, 130
   orig: 107, 130
   offset: 0, 0
   index: -1
 fg/bossTalk3
   rotate: false
-  xy: 705, 376
+  xy: 2, 31
   size: 107, 130
   orig: 107, 130
   offset: 0, 0
   index: -1
 fg/coffeeCup
   rotate: false
-  xy: 2, 2
+  xy: 111, 233
   size: 40, 40
   orig: 40, 40
   offset: 0, 0
   index: -1
 fg/corridorDoorClosed
   rotate: false
-  xy: 2, 246
+  xy: 2, 761
   size: 130, 260
   orig: 130, 260
   offset: 0, 0
   index: -1
 fg/flower
   rotate: false
-  xy: 978, 445
+  xy: 2, 2
   size: 24, 27
   orig: 24, 27
   offset: 0, 0
   index: -1
 fg/iconSee
   rotate: false
-  xy: 978, 474
+  xy: 111, 199
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: -1
 fg/iconTalk
   rotate: false
-  xy: 734, 342
+  xy: 153, 241
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: -1
 fg/iconUse
   rotate: false
-  xy: 312, 272
+  xy: 111, 165
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: -1
 fg/iconWait
   rotate: false
-  xy: 474, 120
+  xy: 111, 131
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: -1
 fg/iconWalk
   rotate: false
-  xy: 44, 10
+  xy: 111, 97
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: -1
-fg/keymonTalk0
-  rotate: false
-  xy: 391, 154
-  size: 81, 102
-  orig: 81, 102
-  offset: 0, 0
-  index: -1
-fg/keymonTalk1
-  rotate: false
-  xy: 474, 154
-  size: 81, 102
-  orig: 81, 102
-  offset: 0, 0
-  index: -1
-fg/keymonTalk2
-  rotate: false
-  xy: 557, 154
-  size: 81, 102
-  orig: 81, 102
-  offset: 0, 0
-  index: -1
-fg/keymonTalk3
-  rotate: false
-  xy: 640, 154
-  size: 81, 102
-  orig: 81, 102
-  offset: 0, 0
-  index: -1
-fg/keymonTalk4
-  rotate: false
-  xy: 391, 50
-  size: 81, 102
-  orig: 81, 102
-  offset: 0, 0
-  index: -1
-fg/keymonWalk0
-  rotate: false
-  xy: 378, 258
-  size: 87, 116
-  orig: 87, 116
-  offset: 0, 0
-  index: -1
-fg/keymonWalk1
-  rotate: false
-  xy: 467, 258
-  size: 87, 116
-  orig: 87, 116
-  offset: 0, 0
-  index: -1
-fg/keymonWalk2
-  rotate: false
-  xy: 556, 258
-  size: 87, 116
-  orig: 87, 116
-  offset: 0, 0
-  index: -1
-fg/keymonWalk3
-  rotate: false
-  xy: 645, 258
-  size: 87, 116
-  orig: 87, 116
-  offset: 0, 0
-  index: -1
-fg/keymonWalk4
-  rotate: false
-  xy: 134, 188
-  size: 87, 116
-  orig: 87, 116
-  offset: 0, 0
-  index: -1
-fg/keymonWalk5
-  rotate: false
-  xy: 223, 188
-  size: 87, 116
-  orig: 87, 116
-  offset: 0, 0
-  index: -1
-fg/keymonWalk6
-  rotate: false
-  xy: 124, 70
-  size: 87, 116
-  orig: 87, 116
-  offset: 0, 0
-  index: -1
-fg/keymonWalk7
-  rotate: false
-  xy: 213, 70
-  size: 87, 116
-  orig: 87, 116
-  offset: 0, 0
-  index: -1
-fg/keymonWalk8
-  rotate: false
-  xy: 302, 70
-  size: 87, 116
-  orig: 87, 116
-  offset: 0, 0
-  index: -1
 fg/officeDoorClosed
   rotate: false
-  xy: 2, 44
+  xy: 134, 821
   size: 120, 200
   orig: 120, 200
   offset: 0, 0
   index: -1
 fg/officeDoorCorridorClosed
   rotate: false
-  xy: 134, 306
+  xy: 134, 619
   size: 120, 200
   orig: 120, 200
   offset: 0, 0
   index: -1
 fg/officeDoorOpened
   rotate: false
-  xy: 256, 306
+  xy: 2, 559
   size: 120, 200
   orig: 120, 200
   offset: 0, 0
   index: -1
 fg/scissors
   rotate: false
-  xy: 124, 48
+  xy: 111, 75
   size: 13, 20
   orig: 13, 20
   offset: 0, 0
   index: -1
 fg/vaultDoorClosed
   rotate: false
-  xy: 814, 366
+  xy: 111, 417
   size: 80, 140
   orig: 80, 140
   offset: 0, 0
   index: -1
 fg/vaultDoorOpened
   rotate: false
-  xy: 896, 366
+  xy: 111, 275
   size: 80, 140
   orig: 80, 140
   offset: 0, 0

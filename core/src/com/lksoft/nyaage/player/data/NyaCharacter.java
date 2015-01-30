@@ -13,6 +13,8 @@ public class NyaCharacter {
 
     // View
     private String view;
+    // Base scale
+    private float baseScale;
 
     // Starting room
     private int startRoom;
@@ -78,5 +80,13 @@ public class NyaCharacter {
 
     public void setView(String view) {
         this.view = view;
+    }
+
+    public float getBaseScale() {
+        return baseScale;
+    }
+
+    public void setBaseScale(float baseScale) {
+        this.baseScale = baseScale;
     }
 }

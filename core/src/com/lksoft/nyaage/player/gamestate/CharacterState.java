@@ -39,7 +39,7 @@ public class CharacterState implements DrawableState {
         room = character.getStartRoom();
 
         // Load View
-        view = new ViewState(character);
+        view = new ViewState(character, true);
     }
 
     public int getRoom() {
@@ -52,6 +52,14 @@ public class CharacterState implements DrawableState {
 
     public NyaCharacter getCharacter() {
         return character;
+    }
+
+    /**
+     * Face a direction
+     * @param facing
+     */
+    public void faceDirection(Direction facing) {
+        view.faceDirection(facing);
     }
 
     /**
@@ -105,6 +113,9 @@ public class CharacterState implements DrawableState {
             Nya.get().getGameState().getCommandRunner().interrupt(walking);
         }
 
+        // Animation
+        view.setAnimation("walk", true);
+
         // Make new command
         walking = new WalkTo(sqb, walkAreaStatus, new Vector2(x, y), this);
         Nya.get().getGameState().getCommandRunner().start(walking, blocking);
@@ -115,6 +126,9 @@ public class CharacterState implements DrawableState {
      */
     public void endWalking() {
         walking = null;
+
+        // Back to idle
+        view.setAnimation("idle", true);
     }
 
     /**
@@ -164,5 +178,9 @@ public class CharacterState implements DrawableState {
     @Override
     public int getBaseline() {
         return view.getBaseline();
+    }
+
+    public ViewState getView() {
+        return view;
     }
 }
