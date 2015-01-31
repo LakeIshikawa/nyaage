@@ -89,6 +89,7 @@ public class ViewState {
      * Draw
      */
     public void draw() {
+        skeleton.setColor(Nya.get().getSpriteBatch().getColor());
         skeletonRenderer.draw(Nya.get().getSpriteBatch(), skeleton);
         Nya.get().getSpriteBatch().setBlendFunction(GL20.GL_SRC_ALPHA, GL20.GL_ONE_MINUS_SRC_ALPHA);
     }

@@ -32,8 +32,7 @@ public class GameTreeItem extends TreeItem<String> {
             childrenCreated = true;
             ObservableList children = FXCollections.observableArrayList(
                     (TreeItem<String>)new RoomsTreeItem(game),
-                    new CharactersTreeItem(game),
-                    new ViewsTreeItem(game)
+                    new CharactersTreeItem(game)
             );
 
             getChildren().addAll(children);

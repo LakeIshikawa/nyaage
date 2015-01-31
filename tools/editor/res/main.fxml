@@ -14,8 +14,10 @@
                     <menus>
                       <Menu mnemonicParsing="false" text="File">
                         <items>
+                              <MenuItem mnemonicParsing="false" onAction="#newProject" text="New project" />
                           <MenuItem mnemonicParsing="false" onAction="#open" text="Open" />
                               <MenuItem mnemonicParsing="false" onAction="#save" text="Save" />
+                              <SeparatorMenuItem mnemonicParsing="false" />
                               <MenuItem mnemonicParsing="false" onAction="#exit" text="Exit" />
                         </items>
                       </Menu>
@@ -32,9 +34,20 @@
                <children>
                   <SplitPane dividerPositions="0.2" prefHeight="562.0" prefWidth="798.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                     <items>
-                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+                      <AnchorPane>
                            <children>
-                              <TreeView fx:id="gameTree" layoutX="17.0" layoutY="-26.0" prefHeight="160.0" prefWidth="234.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                              <VBox prefHeight="200.0" prefWidth="100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                 <children>
+                                    <ToolBar prefHeight="40.0" prefWidth="200.0">
+                                      <items>
+                                        <Button mnemonicParsing="false" onAction="#addRoom" text="Add room" />
+                                          <Button mnemonicParsing="false" onAction="#addCharacter" text="Add Character" />
+                                          <Button mnemonicParsing="false" onAction="#remove" text="Remove" />
+                                      </items>
+                                    </ToolBar>
+                                    <TreeView fx:id="gameTree" prefHeight="160.0" prefWidth="234.0" VBox.vgrow="ALWAYS" />
+                                 </children>
+                              </VBox>
                            </children>
                         </AnchorPane>
                       <AnchorPane fx:id="inspector" minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0" />

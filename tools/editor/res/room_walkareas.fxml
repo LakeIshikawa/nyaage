@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.canvas.*?>
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.lksoft.nyaage.editor.RoomWalkAreasController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.lksoft.nyaage.editor.RoomWalkAreasController">
    <children>
       <VBox layoutX="250.0" layoutY="100.0" prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
@@ -16,6 +16,11 @@
                   <ToggleButton fx:id="lineButton" mnemonicParsing="false" text="L" />
                   <ToggleButton fx:id="fillButton" mnemonicParsing="false" text="I" />
                   <ToggleButton fx:id="rectangleButton" mnemonicParsing="false" text="R" />
+                  <Label alignment="CENTER" prefHeight="25.0" prefWidth="33.0" text="Area:">
+                     <HBox.margin>
+                        <Insets left="20.0" />
+                     </HBox.margin>
+                  </Label>
                   <ChoiceBox fx:id="areaCombo" prefWidth="150.0" />
                </children>
             </HBox>

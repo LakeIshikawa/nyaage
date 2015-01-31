@@ -3,7 +3,11 @@ package com.lksoft.nyaage.editor;
 import com.badlogic.gdx.utils.Json;
 import com.lksoft.nyaage.editor.gametree.GameTreeItem;
 import com.lksoft.nyaage.editor.gametree.RoomTreeItem;
+import com.lksoft.nyaage.editor.gametree.RoomsTreeItem;
 import com.lksoft.nyaage.player.data.NyaGame;
+import com.lksoft.nyaage.player.data.NyaRoom;
+
+import org.controlsfx.dialog.Dialogs;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -21,6 +25,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.TreeItem;
 import javafx.scene.control.TreeView;
 import javafx.scene.layout.Pane;
+import javafx.stage.DirectoryChooser;
 import javafx.stage.FileChooser;
 
 /**
@@ -36,7 +41,6 @@ public class EditorController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        gameTree.setRoot(new GameTreeItem(new NyaGame()));
         gameTree.setShowRoot(false);
 
         // Selection listener
@@ -52,6 +56,22 @@ public class EditorController implements Initializable {
                 }
             }
         });
+    }
+
+    @FXML
+    public void newProject(ActionEvent event){
+        DirectoryChooser chooser = new DirectoryChooser();
+        chooser.setTitle("New project");
+        File selected = chooser.showDialog(null);
+        if( selected == null ) return;
+
+        try {
+            Project.newProject(selected);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        gameTree.setRoot(new GameTreeItem(Project.getCurrent().getGame()));
     }
 
     @FXML
@@ -95,6 +115,26 @@ public class EditorController implements Initializable {
     @FXML
     public void exit(ActionEvent event){
         System.exit(0);
+    }
+
+    @FXML
+    public void addRoom() {
+        GameTreeItem root = (GameTreeItem) gameTree.getRoot();
+        RoomsTreeItem rooms = (RoomsTreeItem) root.getChildren().get(0);
+
+        NyaRoom room = new NyaRoom();
+        room.setName("New room");
+        rooms.getChildren().add(new RoomTreeItem(room));
+    }
+
+    @FXML
+    public void addCharacter() {
+
+    }
+
+    @FXML
+    public void remove() {
+
     }
 
     /**

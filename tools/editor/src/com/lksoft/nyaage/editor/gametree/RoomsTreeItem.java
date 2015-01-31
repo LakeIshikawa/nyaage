@@ -24,7 +24,7 @@ public class RoomsTreeItem extends TreeItem<String> {
 
     @Override
     public boolean isLeaf(){
-        return game.getRooms().isEmpty();
+        return false;
     }
 
     @Override

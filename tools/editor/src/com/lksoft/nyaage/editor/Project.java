@@ -2,9 +2,11 @@ package com.lksoft.nyaage.editor;
 
 import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.utils.Json;
+import com.lksoft.nyaage.player.Nya;
 import com.lksoft.nyaage.player.data.NyaGame;
 
 import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
@@ -15,6 +17,11 @@ import java.nio.file.Paths;
 public class Project {
     private static Project current = null;
     public static Project getCurrent(){ return current; }
+
+    // Folders in project
+    private static String[] projectFolders = {
+            "fonts", "hotspots", "image", "overlays", "scripts", "spine", "walkmaps"
+    };
 
     // State
     private NyaGame game;
@@ -37,6 +44,28 @@ public class Project {
 
         // Load room bgs
 
+    }
+
+    /**
+     * Create new project
+     * @param directory Project root directory
+     */
+    public static void newProject(File directory) throws IOException {
+        File newGame = new File(directory, "game.json");
+        newGame.createNewFile();
+
+        // Write new game.json
+        Json json = new Json();
+        json.setIgnoreUnknownFields(true);
+        json.toJson(new NyaGame(), new FileHandle(newGame));
+
+        // Create project folders
+        for( String dir : projectFolders ){
+            File dirFile = new File(directory, dir);
+            dirFile.mkdir();
+        }
+
+        current = new Project(newGame);
     }
 
 

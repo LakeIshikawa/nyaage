@@ -30,11 +30,7 @@ public class NyaGamePackager {
         Copy.copyDir(Paths.get(resPath+"hotspots"), Paths.get(assetsPath+"hotspots"));
         Copy.copyDir(Paths.get(resPath+"overlays"), Paths.get(assetsPath+"overlays"));
         Copy.copyDir(Paths.get(resPath+"scripts"), Paths.get(assetsPath+"scripts"));
-        Copy.copyDir(Paths.get(resPath+"spine/skeletons"), Paths.get(assetsPath+"spine"));
-
-        Copy.copyFile(Paths.get(resPath+"spine/characters.atlas"), Paths.get(assetsPath+"image/characters.atlas"), false, true);
-        Copy.copyFile(Paths.get(resPath+"spine/characters.png"), Paths.get(assetsPath+"image/characters.png"), false, true);
-
+        Copy.copyDir(Paths.get(resPath+"spine"), Paths.get(assetsPath+"spine"));
         Copy.copyDir(Paths.get(resPath+"game.json"), Paths.get(assetsPath+"game.json"));
     }
 }

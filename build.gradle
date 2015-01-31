@@ -115,6 +115,7 @@ project("tools:editor") {
 
     dependencies {
         compile project(":core")
+        compile "org.controlsfx:controlsfx:8.+"
     }
 }
 

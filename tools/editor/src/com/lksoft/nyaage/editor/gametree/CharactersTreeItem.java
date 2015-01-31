@@ -24,7 +24,7 @@ public class CharactersTreeItem extends TreeItem<String> {
 
     @Override
     public boolean isLeaf(){
-        return game.getCharacters().isEmpty();
+        return false;
     }
 
     @Override

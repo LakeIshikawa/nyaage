@@ -107,7 +107,6 @@ public class RoomInspectorController implements Initializable {
                 } catch ( NumberFormatException e){
 
                 }
-
             }
         });
 
