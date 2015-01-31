@@ -114,7 +114,7 @@ public class CharacterState implements DrawableState {
         }
 
         // Animation
-        view.setAnimation("walk", true);
+        view.setAnimation(0, "walk", true);
 
         // Make new command
         walking = new WalkTo(sqb, walkAreaStatus, new Vector2(x, y), this);
@@ -128,7 +128,7 @@ public class CharacterState implements DrawableState {
         walking = null;
 
         // Back to idle
-        view.setAnimation("idle", true);
+        view.setAnimation(0, "idle", true);
     }
 
     /**
@@ -150,6 +150,9 @@ public class CharacterState implements DrawableState {
             Nya.get().getGameState().getCommandRunner().interrupt(talking);
         }
 
+        // Animation
+        view.setAnimation(1, "talk", true);
+
         // Make new command
         talking = new Say(this, text, Nya.get().getGameState().getGame().getDefaultFont());
         Nya.get().getGameState().getCommandRunner().start(talking, blocking);
@@ -160,6 +163,9 @@ public class CharacterState implements DrawableState {
      */
     public void endSay() {
         talking = null;
+
+        // Back to normal face
+        view.setAnimation(1, "defaultface", false);
     }
 
 

@@ -1,5 +1,5 @@
 {
-"skeleton": { "hash": "uUbrVVSKuFDvo30Qb9rV8JNqpkQ", "spine": "2.1.09", "width": 117.68, "height": 426.8, "images": "./../" },
+"skeleton": { "hash": "FLf/JA9W1uNeey+ioOT/K4XuSxI", "spine": "2.1.09", "width": 117.68, "height": 426.8, "images": "./../" },
 "bones": [
 	{ "name": "root" },
 	{ "name": "keymon/Hips", "parent": "root", "y": 178.98 },
@@ -65,7 +65,7 @@
 	{ "name": "keymon/Arm", "bone": "keymon/Arm", "attachment": "keymon/Arm" },
 	{ "name": "keymon/Hand", "bone": "keymon/Hand", "attachment": "keymon/Hand" },
 	{ "name": "keymon/Head", "bone": "keymon/Head", "attachment": "keymon/Head" },
-	{ "name": "keymon/Mouth", "bone": "keymon/Head", "attachment": "keymon/Mouth" },
+	{ "name": "keymon/Mouth", "bone": "keymon/Head", "attachment": "keymon/Mouth0001" },
 	{ "name": "keymon/Nose", "bone": "keymon/Head", "attachment": "keymon/Nose" },
 	{ "name": "keymon/Forearm2", "bone": "keymon/Forearm2", "attachment": "keymon/Forearm" },
 	{ "name": "keymon/Arm2", "bone": "keymon/Arm2", "attachment": "keymon/Arm" },
@@ -136,7 +136,13 @@
 			"keymon/Leg": { "x": 35.05, "y": 0.28, "rotation": 89.09, "width": 29, "height": 81 }
 		},
 		"keymon/Mouth": {
-			"keymon/Mouth": { "x": 0.37, "y": 0.11, "rotation": -91.35, "width": 23, "height": 4 }
+			"keymon/Mouth0001": { "x": 3.25, "y": -0.07, "rotation": -91.35, "width": 80, "height": 17 },
+			"keymon/Mouth0002": { "rotation": -91.35, "width": 80, "height": 17 },
+			"keymon/Mouth0003": { "x": 2.43, "y": -0.05, "rotation": -91.35, "width": 80, "height": 17 },
+			"keymon/Mouth0004": { "x": 2.43, "y": -0.05, "rotation": -91.35, "width": 80, "height": 17 },
+			"keymon/Mouth0005": { "x": 1.62, "y": -0.03, "rotation": -91.35, "width": 80, "height": 17 },
+			"keymon/Mouth0006": { "x": 1.62, "y": -0.03, "rotation": -91.35, "width": 80, "height": 17 },
+			"keymon/Mouth0007": { "x": 1.62, "y": -0.03, "rotation": -91.35, "width": 80, "height": 17 }
 		},
 		"keymon/Nose": {
 			"keymon/Nose": { "x": 45.07, "y": -0.24, "rotation": -91.35, "width": 36, "height": 20 }
@@ -153,6 +159,24 @@
 	}
 },
 "animations": {
+	"defaultface-down": {
+		"slots": {
+			"keymon/Mouth": {
+				"attachment": [
+					{ "time": 0, "name": "keymon/Mouth0001" },
+					{ "time": 0.0666, "name": "keymon/Mouth0001" }
+				]
+			}
+		},
+		"bones": {
+			"keymon/Head": {
+				"rotate": [
+					{ "time": 0, "angle": 0, "curve": "stepped" },
+					{ "time": 0.0666, "angle": 0 }
+				]
+			}
+		}
+	},
 	"idle-down": {
 		"slots": {
 			"keymon/Foot": {
@@ -459,6 +483,38 @@
 		"drawOrder": [
 			{ "time": 0 }
 		]
+	},
+	"talk-down": {
+		"slots": {
+			"keymon/Mouth": {
+				"attachment": [
+					{ "time": 0, "name": "keymon/Mouth0006" },
+					{ "time": 0.1, "name": "keymon/Mouth0003" },
+					{ "time": 0.2, "name": "keymon/Mouth0007" },
+					{ "time": 0.3, "name": "keymon/Mouth0006" },
+					{ "time": 0.4, "name": "keymon/Mouth0004" },
+					{ "time": 0.5, "name": "keymon/Mouth0002" },
+					{ "time": 0.6, "name": "keymon/Mouth0004" },
+					{ "time": 0.7, "name": "keymon/Mouth0007" },
+					{ "time": 0.8, "name": "keymon/Mouth0003" }
+				]
+			}
+		},
+		"bones": {
+			"keymon/Head": {
+				"rotate": [
+					{ "time": 0, "angle": 0.48 },
+					{ "time": 0.1, "angle": -1 },
+					{ "time": 0.2, "angle": -2.01 },
+					{ "time": 0.3, "angle": -0.78 },
+					{ "time": 0.4, "angle": 0.73 },
+					{ "time": 0.5, "angle": -1.26 },
+					{ "time": 0.6, "angle": -0.76 },
+					{ "time": 0.7, "angle": -1.75 },
+					{ "time": 0.8, "angle": 0.23 }
+				]
+			}
+		}
 	},
 	"walk-down": {
 		"slots": {

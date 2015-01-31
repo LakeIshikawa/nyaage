@@ -5,78 +5,78 @@ format: RGBA8888
 filter: Linear,Linear
 repeat: none
 keymon/Arm
-  rotate: true
-  xy: 346, 68
+  rotate: false
+  xy: 436, 12
   size: 18, 57
   orig: 18, 57
   offset: 0, 0
   index: -1
 keymon/Ear
   rotate: true
-  xy: 346, 20
+  xy: 189, 50
   size: 28, 39
   orig: 28, 39
   offset: 0, 0
   index: -1
 keymon/Eye
   rotate: false
-  xy: 261, 2
+  xy: 230, 48
   size: 24, 30
   orig: 24, 30
   offset: 0, 0
   index: -1
 keymon/Eyebrow
   rotate: true
-  xy: 85, 2
+  xy: 146, 6
   size: 12, 5
   orig: 12, 5
   offset: 0, 0
   index: -1
 keymon/Foot0001
   rotate: true
-  xy: 261, 34
+  xy: 189, 80
   size: 46, 60
   orig: 46, 60
   offset: 0, 0
   index: -1
 keymon/Foot0002
-  rotate: true
-  xy: 433, 80
+  rotate: false
+  xy: 354, 66
   size: 46, 60
   orig: 46, 60
   offset: 0, 0
   index: -1
 keymon/Forearm
   rotate: true
-  xy: 346, 50
+  xy: 85, 2
   size: 16, 59
   orig: 16, 59
   offset: 0, 0
   index: -1
 keymon/Hand0001
-  rotate: true
-  xy: 85, 16
+  rotate: false
+  xy: 456, 22
   size: 21, 47
   orig: 21, 47
   offset: 0, 0
   index: -1
 keymon/Hand0002
-  rotate: false
-  xy: 323, 33
+  rotate: true
+  xy: 354, 5
   size: 21, 47
   orig: 21, 47
   offset: 0, 0
   index: -1
 keymon/Head
-  rotate: true
-  xy: 143, 30
+  rotate: false
+  xy: 256, 10
   size: 96, 116
   orig: 96, 116
   offset: 0, 0
   index: -1
 keymon/Hips
-  rotate: false
-  xy: 261, 82
+  rotate: true
+  xy: 143, 45
   size: 81, 44
   orig: 81, 44
   offset: 0, 0
@@ -88,23 +88,65 @@ keymon/Leg
   orig: 29, 81
   offset: 0, 0
   index: -1
-keymon/Mouth
+keymon/Mouth0001
   rotate: false
-  xy: 2, 2
-  size: 23, 4
-  orig: 23, 4
+  xy: 85, 20
+  size: 80, 17
+  orig: 80, 17
+  offset: 0, 0
+  index: -1
+keymon/Mouth0002
+  rotate: false
+  xy: 354, 47
+  size: 80, 17
+  orig: 80, 17
+  offset: 0, 0
+  index: -1
+keymon/Mouth0003
+  rotate: false
+  xy: 402, 109
+  size: 80, 17
+  orig: 80, 17
+  offset: 0, 0
+  index: -1
+keymon/Mouth0004
+  rotate: true
+  xy: 484, 46
+  size: 80, 17
+  orig: 80, 17
+  offset: 0, 0
+  index: -1
+keymon/Mouth0005
+  rotate: false
+  xy: 402, 90
+  size: 80, 17
+  orig: 80, 17
+  offset: 0, 0
+  index: -1
+keymon/Mouth0006
+  rotate: false
+  xy: 402, 71
+  size: 80, 17
+  orig: 80, 17
+  offset: 0, 0
+  index: -1
+keymon/Mouth0007
+  rotate: false
+  xy: 354, 28
+  size: 80, 17
+  orig: 80, 17
   offset: 0, 0
   index: -1
 keymon/Nose
   rotate: true
-  xy: 387, 12
+  xy: 479, 8
   size: 36, 20
   orig: 36, 20
   offset: 0, 0
   index: -1
 keymon/Thigh
   rotate: true
-  xy: 344, 88
+  xy: 167, 5
   size: 38, 87
   orig: 38, 87
   offset: 0, 0

@@ -68,7 +68,7 @@ public class ViewState {
         skeletonRenderer.setPremultipliedAlpha(true);
 
         // Set idle animation
-        setAnimation("idle", true);
+        setAnimation(0, "idle", true);
 
         // Take default dimensions
         animationState.apply(skeleton);
@@ -144,11 +144,11 @@ public class ViewState {
      * @param name Animation name
      * @param loop Set to loop or not
      */
-    public void setAnimation(String name, boolean loop){
+    public void setAnimation(int track, String name, boolean loop){
         if( fourDirections ){
-            animationState.setAnimation(0, name+"-"+getFacing(), loop);
+            animationState.setAnimation(track, name+"-"+getFacing(), loop);
         } else {
-            animationState.setAnimation(0, name, loop);
+            animationState.setAnimation(track, name, loop);
         }
     }
 }
