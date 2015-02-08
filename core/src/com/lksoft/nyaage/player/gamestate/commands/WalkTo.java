@@ -23,12 +23,14 @@ public class WalkTo extends ScriptCommand {
     List<SquareNode> path;
     // Timer
     float timer = 0.0f;
+    // Current node
+    int curentNode = 0;
+    // Total walk time
+    float timeToNext;
 
     // Character
     CharacterState character;
 
-    // Total walk time
-    float walkTime;
 
     /**
      * Go to destination!
@@ -48,15 +50,31 @@ public class WalkTo extends ScriptCommand {
         // Make the path as straight as possible
         simplifyPath(sqb, walkAreasStatus);
 
-        // Calculate path length
-        float pathLength = 0;
-        for( int i=1; i<path.size(); i++ ){
-            float dx = path.get(i).getBounds().getCenterX() - path.get(i-1).getBounds().getCenterX();
-            float dy = path.get(i).getBounds().getCenterY() - path.get(i-1).getBounds().getCenterY();
-            pathLength += Math.sqrt(dx*dx + dy*dy);
-        }
+        // Go to start node
+        nextNode();
+    }
 
-        walkTime = pathLength/character.getCharacter().getWalkingSpeed();
+    /**
+     * Go to next node or finish
+     * @return true=no more nodes
+     */
+    private boolean nextNode() {
+        curentNode++;
+        if(curentNode >= path.size() ) return true;
+
+        // Calculate delta
+        float dx = path.get(curentNode).getBounds().getCenterX() - path.get(curentNode-1).getBounds().getCenterX();
+        float dy = path.get(curentNode).getBounds().getCenterY() - path.get(curentNode-1).getBounds().getCenterY();
+
+        // Set direction
+        if( Math.abs(dx) > Math.abs(dy) && dx > 0 ) character.getView().faceDirection(Direction.RIGHT);
+        if( Math.abs(dx) > Math.abs(dy) && dx < 0 ) character.getView().faceDirection(Direction.LEFT);
+        if( Math.abs(dy) > Math.abs(dx) && dy > 0 ) character.getView().faceDirection(Direction.UP);
+        if( Math.abs(dy) > Math.abs(dx) && dy < 0 ) character.getView().faceDirection(Direction.DOWN);
+
+        //Calculate time to next node
+        timeToNext = (float)Math.sqrt(dx*dx+dy*dy)/character.getWalkingSpeed();
+        return false;
     }
 
     /**
@@ -125,50 +143,26 @@ public class WalkTo extends ScriptCommand {
     public boolean doUpdate(){
         timer += Gdx.graphics.getDeltaTime();
 
-        // Current walked length
-        float curLength = character.getCharacter().getWalkingSpeed()*timer;
-
-        // Find current node
-        float pathLength = 0;
-        int i=1;
-        for( ; i<path.size(); i++ ){
-            float dx = path.get(i).getBounds().getCenterX() - path.get(i-1).getBounds().getCenterX();
-            float dy = path.get(i).getBounds().getCenterY() - path.get(i-1).getBounds().getCenterY();
-            pathLength += Math.sqrt(dx*dx + dy*dy);
-            if( curLength < pathLength ) break;
+        // Next node if time passed
+        if( timer >= timeToNext ){
+            timer -= timeToNext;
+            if( nextNode()) {
+                doSkip();
+                return true;
+            }
         }
 
-        // Finish
-        if( i==path.size() ) {
-            character.getView().setPosition(
-                    path.get(i-1).getBounds().getCenterX(),
-                    path.get(i-1).getBounds().getCenterY());
-            return true;
-        }
-
-        // Target node is 'i'
-        // Find t
-        float dx = path.get(i).getBounds().getCenterX() - path.get(i-1).getBounds().getCenterX();
-        float dy = path.get(i).getBounds().getCenterY() - path.get(i-1).getBounds().getCenterY();
-        float nodeDist = (float) Math.sqrt(dx*dx + dy*dy);
-        float t = (curLength - (pathLength - nodeDist)) / nodeDist;
-
-        // Interpolate
+        // Interpolate position
+        float t = timer/timeToNext;
         float ix = Interpolation.linear.apply(
-                path.get(i-1).getBounds().getCenterX(),
-                path.get(i).getBounds().getCenterX(),
+                path.get(curentNode-1).getBounds().getCenterX(),
+                path.get(curentNode).getBounds().getCenterX(),
                 t);
         float iy = Interpolation.linear.apply(
-                path.get(i-1).getBounds().getCenterY(),
-                path.get(i).getBounds().getCenterY(),
+                path.get(curentNode-1).getBounds().getCenterY(),
+                path.get(curentNode).getBounds().getCenterY(),
                 t);
         character.getView().setPosition(ix, iy);
-
-        // Set direction
-        if( Math.abs(dx) > Math.abs(dy) && dx > 0 ) character.getView().faceDirection(Direction.RIGHT);
-        if( Math.abs(dx) > Math.abs(dy) && dx < 0 ) character.getView().faceDirection(Direction.LEFT);
-        if( Math.abs(dy) > Math.abs(dx) && dy > 0 ) character.getView().faceDirection(Direction.UP);
-        if( Math.abs(dy) > Math.abs(dx) && dy < 0 ) character.getView().faceDirection(Direction.DOWN);
 
         return false;
     }
@@ -216,7 +210,7 @@ public class WalkTo extends ScriptCommand {
         // Position
         int dx = (int)path.get(path.size()-1).getBounds().getCenterX();
         int dy = (int)path.get(path.size()-1).getBounds().getCenterY();
-        character.getView().getPosition().set(dx, dy);
+        character.getView().setPosition(dx, dy);
 
         // Face
         if( path.size() > 2 ) {

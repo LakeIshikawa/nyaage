@@ -25,12 +25,9 @@ import java.util.Vector;
 public class ViewState {
 
     // Skeleton data
-    private Skeleton skeleton;
+    private Skeleton[] skeleton = new Skeleton[4];
+    private AnimationState[] animationState = new AnimationState[4];
     private SkeletonRenderer skeletonRenderer;
-    private AnimationState animationState;
-
-    // 4-directions or not
-    private boolean fourDirections;
 
     // Facing
     private Direction facing = Direction.DOWN;
@@ -45,52 +42,87 @@ public class ViewState {
     /**
      * Make a view state
      */
-    public ViewState(NyaCharacter character, boolean fourDirections){
-        this.fourDirections = fourDirections;
+    public ViewState(NyaCharacter character){
 
         // Load atlas and json
         TextureAtlas atlas = Nya.get().getAssetManager().get("image/characters.atlas", TextureAtlas.class);
         SkeletonJson skeletonJson = new SkeletonJson(atlas);
         skeletonJson.setScale(character.getBaseScale());
-        SkeletonData skeletonData = skeletonJson.readSkeletonData(Gdx.files.internal(character.getView()));
-        skeleton = new Skeleton(skeletonData);
-        skeleton.setPosition(character.getStartX(), character.getStartY());
 
-        // Make animation state
-        AnimationStateData animationStateData = new AnimationStateData(skeletonData);
-        animationState = new AnimationState(animationStateData);
+        // Load skeletons
+        loadSkeleton(skeletonJson, 0, character.getViewFront());
+        loadSkeleton(skeletonJson, 1, character.getViewSide());
+        loadSkeleton(skeletonJson, 2, character.getViewSide());
+        loadSkeleton(skeletonJson, 3, character.getViewBack());
 
-        // Set standard mix values
-        animationStateData.setDefaultMix(0.2f);
+        // Flip left!
+        if( skeleton[2] != null ) skeleton[2].setFlipX(true);
+
+        // Set initial position
+        for( int i=0; i<4; i++ ){
+            if( skeleton[i] != null ) {
+                skeleton[i].setPosition(character.getStartX(), character.getStartY());
+            }
+        }
 
         // Create renderer
         skeletonRenderer = new SkeletonRenderer();
         skeletonRenderer.setPremultipliedAlpha(true);
 
         // Set idle animation
+        int index = getDirectionIndex();
         setAnimation(0, "idle", true);
 
         // Take default dimensions
-        animationState.apply(skeleton);
-        skeleton.updateWorldTransform();
-        skeleton.getBounds(aabbOffset, aabbSize);
+        animationState[index].apply(skeleton[index]);
+        skeleton[index].updateWorldTransform();
+        skeleton[index].getBounds(aabbOffset, aabbSize);
+    }
+
+    /**
+     * Load a skeleton and animation state
+     * @param skeletonJson
+     * @param pos
+     * @param view
+     */
+    private void loadSkeleton(SkeletonJson skeletonJson, int pos, String view) {
+        if( view == null ) return;
+
+        SkeletonData skeletonData = skeletonJson.readSkeletonData(Gdx.files.internal(view));
+        skeleton[pos] = new Skeleton(skeletonData);
+
+        // Make animation state
+        AnimationStateData animationStateData = new AnimationStateData(skeletonData);
+        animationState[pos] = new AnimationState(animationStateData);
+
+        // Set standard mix values
+        animationStateData.setDefaultMix(0.2f);
     }
 
     /**
      * Frame update
      */
     public void update() {
-        animationState.update(Gdx.graphics.getDeltaTime());
-        animationState.apply(skeleton);
-        skeleton.updateWorldTransform();
+        // Choose direction
+        int index = getDirectionIndex();
+
+        if( index != -1 ) {
+            animationState[index].update(Gdx.graphics.getDeltaTime());
+            animationState[index].apply(skeleton[index]);
+            skeleton[index].updateWorldTransform();
+        }
     }
 
     /**
      * Draw
      */
     public void draw() {
-        skeleton.setColor(Nya.get().getSpriteBatch().getColor());
-        skeletonRenderer.draw(Nya.get().getSpriteBatch(), skeleton);
+        // Choose direction
+        int index = getDirectionIndex();
+
+        // Draw
+        skeleton[index].setColor(Nya.get().getSpriteBatch().getColor());
+        skeletonRenderer.draw(Nya.get().getSpriteBatch(), skeleton[index]);
         Nya.get().getSpriteBatch().setBlendFunction(GL20.GL_SRC_ALPHA, GL20.GL_ONE_MINUS_SRC_ALPHA);
     }
 
@@ -98,7 +130,7 @@ public class ViewState {
      * @return This view's baseline
      */
     public int getBaseline() {
-        return (int)skeleton.getY();
+        return (int)skeleton[getDirectionIndex()].getY();
     }
 
     /**
@@ -112,7 +144,8 @@ public class ViewState {
      * @return current position
      */
     public Vector2 getPosition() {
-        tmpPosition.set(skeleton.getX(), skeleton.getY());
+        int index = getDirectionIndex();
+        tmpPosition.set(skeleton[index].getX(), skeleton[index].getY());
         return tmpPosition;
     }
 
@@ -122,7 +155,11 @@ public class ViewState {
      * @param y
      */
     public void setPosition(float x, float y) {
-        skeleton.setPosition(x, y);
+        for( int i=0; i<4; i++ ) {
+            if( skeleton[i] != null ) {
+                skeleton[i].setPosition(x, y);
+            }
+        }
     }
 
     /**
@@ -146,10 +183,28 @@ public class ViewState {
      * @param loop Set to loop or not
      */
     public void setAnimation(int track, String name, boolean loop){
-        if( fourDirections ){
-            animationState.setAnimation(track, name+"-"+getFacing(), loop);
-        } else {
-            animationState.setAnimation(track, name, loop);
+        for( int i=0; i<4; i++ ) {
+            if( animationState[i] != null ) {
+                animationState[i].setAnimation(track, name, loop);
+            }
         }
+    }
+
+    /**
+     * @return The index of the skeleton/animationData of current
+     * facing direction, or fallback to any other if not present.
+     */
+    private int getDirectionIndex(){
+        if( skeleton[facing.ordinal()] != null ){
+            return facing.ordinal();
+        }
+        else {
+            // Fallback to any available skeleton
+            for (int i = 0; i < 4; i++) {
+                if (skeleton[i] != null) return i;
+            }
+        }
+
+        return -1;
     }
 }

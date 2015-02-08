@@ -12,7 +12,10 @@ public class NyaCharacter {
     private String scriptId;
 
     // View
-    private String view;
+    private String viewFront;
+    private String viewSide;
+    private String viewBack;
+
     // Base scale
     private float baseScale;
 
@@ -20,7 +23,8 @@ public class NyaCharacter {
     private int startRoom;
 
     // Walking speed
-    private float walkingSpeed;
+    private float walkingSpeedVer;
+    private float walkingSpeedHor;
 
     // Starting position
     private float startX;
@@ -58,14 +62,6 @@ public class NyaCharacter {
         this.scriptId = scriptId;
     }
 
-    public float getWalkingSpeed() {
-        return walkingSpeed;
-    }
-
-    public void setWalkingSpeed(float walkingSpeed) {
-        this.walkingSpeed = walkingSpeed;
-    }
-
     public int getStartRoom() {
         return startRoom;
     }
@@ -74,19 +70,51 @@ public class NyaCharacter {
         this.startRoom = startRoom;
     }
 
-    public String getView() {
-        return view;
-    }
-
-    public void setView(String view) {
-        this.view = view;
-    }
-
     public float getBaseScale() {
         return baseScale;
     }
 
     public void setBaseScale(float baseScale) {
         this.baseScale = baseScale;
+    }
+
+    public String getViewFront() {
+        return viewFront;
+    }
+
+    public void setViewFront(String viewFront) {
+        this.viewFront = viewFront;
+    }
+
+    public String getViewSide() {
+        return viewSide;
+    }
+
+    public void setViewSide(String viewSide) {
+        this.viewSide = viewSide;
+    }
+
+    public String getViewBack() {
+        return viewBack;
+    }
+
+    public void setViewBack(String viewBack) {
+        this.viewBack = viewBack;
+    }
+
+    public float getWalkingSpeedVer() {
+        return walkingSpeedVer;
+    }
+
+    public void setWalkingSpeedVer(float walkingSpeedVer) {
+        this.walkingSpeedVer = walkingSpeedVer;
+    }
+
+    public float getWalkingSpeedHor() {
+        return walkingSpeedHor;
+    }
+
+    public void setWalkingSpeedHor(float walkingSpeedHor) {
+        this.walkingSpeedHor = walkingSpeedHor;
     }
 }

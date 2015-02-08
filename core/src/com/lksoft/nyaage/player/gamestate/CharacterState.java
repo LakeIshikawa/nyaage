@@ -39,7 +39,7 @@ public class CharacterState implements DrawableState {
         room = character.getStartRoom();
 
         // Load View
-        view = new ViewState(character, true);
+        view = new ViewState(character);
     }
 
     public int getRoom() {
@@ -188,5 +188,22 @@ public class CharacterState implements DrawableState {
 
     public ViewState getView() {
         return view;
+    }
+
+    /**
+     * @return Walking speed based on facing direction
+     */
+    public float getWalkingSpeed() {
+        switch(view.getFacing()){
+            case DOWN:
+            case UP:
+                return character.getWalkingSpeedVer();
+
+            case LEFT:
+            case RIGHT:
+                 return character.getWalkingSpeedHor();
+        }
+
+        return 0;
     }
 }

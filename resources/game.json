@@ -51,20 +51,24 @@
         {
             "displayName":"Keymon",
             "scriptId":"cKeymon",
-            "view":"spine/keymon.json",
+            "viewFront":"spine/keymon-front.json",
+            "viewSide":"spine/keymon-side.json",
             "baseScale":0.5,
             "startRoom":1,
-            "walkingSpeed":40,
+            "walkingSpeedVer":40,
+            "walkingSpeedHor":100,
             "startX":603,
             "startY":135
         },
         {
             "displayName":"Boss",
             "scriptId":"cBoss",
-            "view":"spine/keymon.json",
+            "viewFront":"spine/keymon-front.json",
+            "viewSide":"spine/keymon-side.json",
             "baseScale":0.5,
             "startRoom":2,
-            "walkingSpeed":40,
+            "walkingSpeedVer":40,
+            "walkingSpeedHor":100,
             "startX":603,
             "startY":135
         }
